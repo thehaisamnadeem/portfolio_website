@@ -594,14 +594,14 @@ requestAnimationFrame(() => document.body.classList.add('ready'));
         // widening translucent strokes build a bloom that actually reads on
         // pale paper, where a blurred dark halo does not.  blur is layered on
         // top for softness.
-        const halos = [[3, 0.34], [7, 0.22], [13, 0.13], [22, 0.07]];
+        const halos = [[1.5, 0.30], [3.5, 0.18], [6.5, 0.10], [11, 0.05]];
         ctx.shadowColor = 'rgba(' + gr + ',' + gg + ',' + gb + ',0.55)';
         for (const [spread, weight] of halos){
           const a = t * weight * L.strength;
           if (a < 0.004) continue;
           ctx.shadowBlur = spread * 1.4;
           ctx.strokeStyle = 'rgba(' + gr + ',' + gg + ',' + gb + ',' + a.toFixed(4) + ')';
-          ctx.lineWidth = L.width + spread * 2;
+          ctx.lineWidth = L.width + spread * 1.7;
           ctx.stroke();
         }
         ctx.shadowBlur = 0;
